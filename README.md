@@ -70,6 +70,10 @@ To evaluate my models, I conducted standardized
 statistical tests such as MSE and R-squared. Below
 are graphs of the MSE and R-squared values for these
 experiments.
+
+| | |
+|:-------------------------:|:-------------------------:|
+|<img src="graphs/comparison_MSE.png" width="400"> |<img src="graphs/comparisonR2.png" width="400"> |
 In these graphs, we can see a picture of the statistical
 nature of our models, for both TF and TF-IDF. The
 R-squared tests show that the models can explain
@@ -88,7 +92,7 @@ With ridge established as the most generally effective
 model, it can be used to draw more insights into the
 text. The effectiveness of individual words can be
 found and isolated
-![Residual Distribution Plot](graphs/residuals_distribution .png)
+![Residual Distribution Plot](graphs/residuals_distribution.png)
 This graph of the residuals distribution shows that the
 residuals are generally centered around zero,
 indicating that the model has done a decent job at
@@ -113,6 +117,10 @@ generally successful ones, but not super accurate. For
 parameter tuning, the most effective alphas were 10.0
 for TF-ridge, 0.001 for TF-lasso, 1.0 for TF-IDF-ridge,
 and .001 for TF-idf-lasso.
+| | |
+|:-------------------------:|:-------------------------:|
+|<img src="graphs/top10tfnew.png" width="400"> |<img src="graphs/top10tfidfnew.png" width="400"> |
+|<img src="graphs/bot10tfnew.png" width="400"> |<img src="graphs/bot10tfidfnew.png" width="400"> |
 Above, there are 4 graphs that plot the top and bottom
 ten words for both TF and TF-IDF modeling. These
 words give general red flags to wine consumers, and
