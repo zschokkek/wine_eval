@@ -1,4 +1,4 @@
-This is a project I did in college where I tried to predict wine ratings based on the description given by the review using NLP. I explain my methodology below.  \n
+This is a project I did in college where I tried to predict wine ratings based on the description given by the review using NLP. I explain my methodology below. 
 
 ## Methods 
 #### Natural Language Processing
