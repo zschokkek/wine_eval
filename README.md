@@ -74,6 +74,7 @@ experiments.
 | | |
 |:-------------------------:|:-------------------------:|
 |<img src="graphs/comparison_MSE.png" width="400"> |<img src="graphs/comparisonR2.png" width="400"> |
+
 In these graphs, we can see a picture of the statistical
 nature of our models, for both TF and TF-IDF. The
 R-squared tests show that the models can explain
@@ -119,13 +120,15 @@ for TF-ridge, 0.001 for TF-lasso, 1.0 for TF-IDF-ridge,
 and .001 for TF-idf-lasso.
 | | |
 |:-------------------------:|:-------------------------:|
-|<img src="graphs/top10tfnew.png" width="400"> |<img src="graphs/top10tfidfnew.png" width="400"> |
-|<img src="graphs/bot10tfnew.png" width="400"> |<img src="graphs/bot10tfidfnew.png" width="400"> |
+|<img src="graphs/top10tfnew.png" width="400" height="300"> |<img src="graphs/top10tfidfnew.png" width="400" height="300">  |
+|<img src="graphs/bot10tfnew.png" width="400" height="300"> |<img src="graphs/bot10tfidfnew.png" width="400" height="300"> |
+
 Above, there are 4 graphs that plot the top and bottom
-ten words for both TF and TF-IDF modeling. These
+ten words for both TF and TF-IDF modeling. In some cases, the words have been slightly altered for the sake of data processing. These
 words give general red flags to wine consumers, and
 indicate that people should stay away from ultra sweet
-wines from Virginia, but seek out concentrated flavors. \v
+wines from Virginia, but seek out concentrated flavors.
+both TF (Term Frequency) and TF-IDF (Term Frequency-Inverse Document Frequency) methods identify strong positive predictors associated with exceptional wine qualities, with words like "rancio" (a desirable characteristic in certain wines) and "devastatingli" appearing as top positive indicators across both models. Interestingly, the negative predictors include specific wine regions (Lebanon, Mexico) and grape varieties (chambourcin), suggesting these might be associated with lower-rated wines in the dataset or could indicate potential regional biases in the ratings. The TF-IDF model appears to give more weight to descriptive adjectives like "beauti," "magnific," and "gorgeou," while the TF model includes more technical terms and aging indicators like "now2025" and "superintens," indicating different aspects of wine evaluation are captured by each method. The higher coefficient values in the TF-IDF model (reaching ~9 compared to ~3.5 in TF) suggest this method might be more effective at distinguishing the truly distinctive features of highly-rated wines by accounting for term rarity. Words like "unbal" (unbalanced) appearing as strong negative predictors in both models demonstrates consistency in identifying unfavorable wine characteristics, lending credibility to the analysis.
 
 ## Conclusion  
 There wasn't much novel insight to be drawn from the results themselves -- it mostly just showed that clearly negative words like "rotten" or "skunky" led to bad scores.  However, this meant that constructing the models was an informative process. 
