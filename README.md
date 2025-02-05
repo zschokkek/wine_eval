@@ -88,6 +88,7 @@ With ridge established as the most generally effective
 model, it can be used to draw more insights into the
 text. The effectiveness of individual words can be
 found and isolated
+![Residual Distribution Plot](graphs/residuals_distribution .png)
 This graph of the residuals distribution shows that the
 residuals are generally centered around zero,
 indicating that the model has done a decent job at
@@ -99,6 +100,7 @@ R-squared, it fails here. The spread and height of the
 residuals show that this model has a good deal of
 variance. The higher concentration of residuals means
 that these models are more robust to outliers.
+![Predicted vs Actual Plot](graphs/predictedvsactual.png)
 This graph shows the actual values plotted against the
 predicted ones. The trend line maps the “accuracy” of
 the three models. In analyzing this data, it was found

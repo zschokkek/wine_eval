@@ -16,13 +16,15 @@ from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error, e
 import matplotlib.pyplot as plt
 
 nltk.download('stopwords')
-nltk.download('punkt')
+nltk.download('punkt_tab')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('stopwords')
 nltk.download('wordnet')
 
 
 
 # Load the data
-file_path = 'archive/winemag-data-130k-v2.csv'
+file_path = 'archive/winemag-data_first150k.csv'
 data = pd.read_csv(file_path)
 
 # Select relevant columns and drop rows with missing descriptions or points
@@ -238,42 +240,41 @@ def plot_top_features(vectorizer, model, model_name, top_n=10):
         coefficients = model.coef_
     else:
         coefficients = model.feature_importances_
-
-    # Create a DataFrame to store words and their coefficients or importances
+    
     coef_df = pd.DataFrame({'word': feature_names, 'coefficient': coefficients})
     coef_df['abs_coefficient'] = coef_df['coefficient'].abs()
+    
+    # Filter standalone numbers between 1900-2024
+    mask = ~(coef_df['word'].str.match(r'^\d+$')) | (
+        coef_df['word'].str.match(r'^\d+$') & 
+        pd.to_numeric(coef_df['word'], errors='coerce').between(1900, 2024)
+    )
+    coef_df = coef_df[mask]
+    
     top_positive_words = coef_df.sort_values(by='coefficient', ascending=False).head(top_n)
     top_negative_words = coef_df.sort_values(by='coefficient', ascending=True).head(top_n)
 
-
-
     print("Top Positive Words:")
     print(top_positive_words)
-    # Plot the top positive words
+    
     plt.figure(figsize=(12, 6))
-
     plt.subplot(1, 2, 1)
     plt.barh(top_positive_words['word'], top_positive_words['coefficient'], color='green')
     plt.xlabel('Coefficient' if hasattr(model, 'coef_') else 'Feature Importance')
     plt.title(f'Top {top_n} Positive Predictors ({model_name})')
-
     plt.tight_layout()
     plt.show()
 
     print("Top Negative Words:")
     print(top_negative_words)
-     # Plot the top Negative words
+    
     plt.figure(figsize=(12, 6))
-
     plt.subplot(1, 2, 1)
     plt.barh(top_negative_words['word'], top_negative_words['coefficient'], color='red')
     plt.xlabel('Coefficient' if hasattr(model, 'coef_') else 'Feature Importance')
     plt.title(f'Top {top_n} Negative Predictors ({model_name})')
-
     plt.tight_layout()
     plt.show()
-
-
 # Train Ridge Regression and Random Forest on TF data
 ridge_tf = Ridge(alpha=1.0)
 ridge_tf.fit(X_tf, y)
